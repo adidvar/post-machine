@@ -1,6 +1,7 @@
 #ifndef TAPE_HPP
 #define TAPE_HPP
 
+#include <QIODevice>
 #include <QString>
 #include <vector>
 
@@ -20,8 +21,8 @@ public:
     void writeOnHead(bool value);
     bool readOnHead() const;
 
-    void saveToFile(QString url) const;
-    void loadFromFile(QString url);
+    void saveToDevice(QTextStream &io) const;
+    void loadFromDevice(QTextStream &io);
 
     void clear();
 

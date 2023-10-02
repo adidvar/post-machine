@@ -28,7 +28,7 @@ void PostMachineController::insertCommand(size_t index)
     if (m_model->getCommands().size() < index)
         m_model->getCommands().append(Command());
     else
-        m_model->getCommands().insert(index, Command());
+        m_model->getCommands().insert(index + 1, Command());
 }
 
 void PostMachineController::deleteCommand(size_t index)
@@ -70,16 +70,6 @@ void PostMachineController::loadFile(QString url)
 void PostMachineController::saveFile(QString url)
 {
     m_model->saveToFile(url);
-}
-
-void PostMachineController::loadTape(QString url)
-{
-    m_model->getTape().loadFromFile(url);
-}
-
-void PostMachineController::saveTape(QString url)
-{
-    m_model->getTape().saveToFile(url);
 }
 
 void PostMachineController::timer()

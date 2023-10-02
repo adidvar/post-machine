@@ -56,6 +56,8 @@ void PostMachineModel::saveToFile(QString url) const {
       io << value.getCommand() << '\t' << value.getJumps() << '\t'
          << value.getComment().remove('\t') << '\n';
     }
+    io << "<TAPE>" << '\n';
+    getTape().saveToDevice(io);
 
     file.close();
 }
@@ -79,9 +81,11 @@ void PostMachineModel::loadFromFile(QString url) {
 
     while (!io.atEnd()) {
       line = io.readLine();
+      if (line.contains("<TAPE>")) break;
       auto parts = line.split('\t');
       getCommands().push_back(Command(parts[0], parts[1], parts[2]));
     }
+    getTape().loadFromDevice(io);
 
     file.close();
 }

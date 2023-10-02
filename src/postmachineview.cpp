@@ -33,10 +33,6 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
 
     connect(ui->load_action, &QAction::triggered, this, &PostMachineView::load_file);
 
-    connect(ui->load_tape_action, &QAction::triggered, this, &PostMachineView::load_tape);
-
-    connect(ui->save_tape_action, &QAction::triggered, this, &PostMachineView::save_tape);
-
     connect(m_timer, &QTimer::timeout, this, &PostMachineView::timer);
 
     controller->normalSpeed();
@@ -95,7 +91,8 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
       auto comment_item = new QTableWidgetItem(commands[i].getComment());
       ui->commands_widget->setItem(i, 2, comment_item);
     }
-    ui->commands_widget->selectRow(model.getCommandIndex());
+    if (model.isRunning())
+      ui->commands_widget->selectRow(model.getCommandIndex());
 
     m_editing = false;
 }
@@ -122,6 +119,9 @@ void PostMachineView::on_commands_widget_itemChanged(QTableWidgetItem *item)
     auto comment = ui->commands_widget->item(row, 2)->text();
 
     controller->commandEntered(row, command, argc, comment);
+
+    if (Command(command, argc, comment).getType() == Command::Invalid)
+      QApplication::beep();
 
     loadDataFromModel(*controller->getModel());
 }
@@ -160,23 +160,10 @@ void PostMachineView::on_stop_button_clicked()
 void PostMachineView::on_step_button_clicked()
 {
     controller->step();
+    ui->commands_widget->selectRow(controller->getModel()->getCommandIndex());
     loadDataFromModel(*controller->getModel());
     if (controller->getModel()->getStatus() != PostMachine::NoError)
       controller->getModel()->reset();
-}
-
-void PostMachineView::save_tape()
-{
-    controller->saveTape(
-        QFileDialog::getSaveFileName(this, tr("Save file"), "", "*.posttape"));
-    loadDataFromModel(*controller->getModel());
-}
-
-void PostMachineView::load_tape()
-{
-    controller->loadTape(
-        QFileDialog::getOpenFileName(this, tr("Open file"), "", "*.posttape"));
-    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::new_file()

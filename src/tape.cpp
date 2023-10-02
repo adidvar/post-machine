@@ -61,16 +61,7 @@ bool Tape::readOnHead() const
     return getValue(getHead());
 }
 
-void Tape::saveToFile(QString url) const
-{
-    QFile file(url);
-    file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
-    if (!file.isOpen()) {
-        file.close();
-        return;
-    }
-    QTextStream io(&file);
-
+void Tape::saveToDevice(QTextStream &io) const {
     io << m_positive.size() << " ";
     io << m_negative.size() << " ";
 
@@ -80,20 +71,9 @@ void Tape::saveToFile(QString url) const
     for (auto value : m_negative) {
         io << value << " ";
     }
-
-    file.close();
 }
 
-void Tape::loadFromFile(QString url)
-{
-    QFile file(url);
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    if (!file.isOpen()) {
-        file.close();
-        return;
-    }
-    QTextStream io(&file);
-
+void Tape::loadFromDevice(QTextStream &io) {
     size_t p_size, n_size;
 
     io >> p_size >> n_size;
@@ -112,8 +92,6 @@ void Tape::loadFromFile(QString url)
         io >> value;
         m_negative.push_back(value);
     }
-
-    file.close();
 }
 
 void Tape::clear()

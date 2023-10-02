@@ -24,8 +24,6 @@ class PostMachineController {
   void cleanAll();
   void loadFile(QString url);
   void saveFile(QString url);
-  void loadTape(QString url);
-  void saveTape(QString url);
 
   void timer();
 

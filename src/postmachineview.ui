@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>798</width>
-    <height>719</height>
+    <width>694</width>
+    <height>915</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -114,7 +114,7 @@
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>200</height>
+          <height>60</height>
          </size>
         </property>
         <property name="sizeIncrement">
@@ -126,7 +126,7 @@
         <property name="baseSize">
          <size>
           <width>0</width>
-          <height>0</height>
+          <height>60</height>
          </size>
         </property>
        </widget>
@@ -320,7 +320,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>798</width>
+     <width>694</width>
      <height>21</height>
     </rect>
    </property>
@@ -334,13 +334,6 @@
     <addaction name="save_action"/>
     <addaction name="separator"/>
     <addaction name="exit_action"/>
-   </widget>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>Tape</string>
-    </property>
-    <addaction name="load_tape_action"/>
-    <addaction name="save_tape_action"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
@@ -360,7 +353,6 @@
     <addaction name="custom_speed_action"/>
    </widget>
    <addaction name="menu"/>
-   <addaction name="menu_2"/>
    <addaction name="menu_4"/>
    <addaction name="menu_3"/>
   </widget>

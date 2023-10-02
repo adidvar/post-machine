@@ -39,9 +39,6 @@ private slots:
     void on_stop_button_clicked();
     void on_step_button_clicked();
 
-    void save_tape();
-    void load_tape();
-
     void new_file();
     void load_file();
     void save_file();
