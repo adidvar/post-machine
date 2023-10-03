@@ -3,6 +3,7 @@
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QMessageBox>
+#include <QTableWidgetItem>
 
 #include "./ui_postmachineview.h"
 #include "postmachinecontroller.hpp"
@@ -17,6 +18,8 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     ui->setupUi(this);
     m_timer->setSingleShot(true);
     ui->commands_widget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->commands_widget->horizontalHeader()->setSectionResizeMode(
+        QHeaderView::Stretch);
 
     connect(ui->tape_widget, &TapeWidget::valueChanged, this,
             &PostMachineView::tape_value_changed);
