@@ -53,18 +53,23 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
         break;
       case PostMachine::OutOfCommands:
         QMessageBox::warning(this, tr("Warning"),
-                             tr("Post machine stopped because found a command "
-                                "that don`t exist"));
+                             tr("The Post Machine stopped due to switching to "
+                                "a command that does not exist"));
         break;
       case PostMachine::EndCommand:
         QMessageBox::information(
             this, tr("Information"),
-            tr("Post machine stopped because found a stop command"));
+            tr("The Post Machine stopped at the stop command"));
         break;
       case PostMachine::InvalidCommand:
         QMessageBox::warning(
             this, tr("Warning"),
-            tr("Post machine stopped because found a invalid command"));
+            tr("The Post Machine stopped due to an incorrect command"));
+        break;
+      case PostMachine::InvalidWrite:
+        QMessageBox::warning(this, tr("Warning"),
+                             tr("The Post Machine stopped due to an incorrect "
+                                "write command (cell overwriting)"));
         break;
     }
     ui->tape_widget->loadFromTape(model.getTape());

@@ -23,9 +23,17 @@ void PostMachine::nextStep() {
         m_tape.setHead(m_tape.getHead() + 1);
         break;
     case Command::WriteZero:
+        if (m_tape.readOnHead() == 0) {
+          m_status = InvalidWrite;
+          return;
+        }
         m_tape.writeOnHead(0);
         break;
     case Command::WriteOne:
+        if (m_tape.readOnHead() == 1) {
+          m_status = InvalidWrite;
+          return;
+        }
         m_tape.writeOnHead(1);
         break;
     case Command::MoveIF:

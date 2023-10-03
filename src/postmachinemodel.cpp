@@ -73,6 +73,8 @@ void PostMachineModel::loadFromFile(QString url) {
 
     QTextStream io(&file);
 
+    m_problem.clear();
+
     QString line;
     do {
       m_problem += line;

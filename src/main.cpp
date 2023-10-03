@@ -13,7 +13,8 @@ int main(int argc, char *argv[]) {
 
   if (translator.load(QLocale::system(), "postmachine", ".", "."))
     QApplication::installTranslator(&translator);
-  else if (translator.load(QLocale::system(), "postmachine", ".", "/locales"))
+  else if (translator.load(QLocale::system(), "postmachine", ".",
+                           "/translations"))
     QApplication::installTranslator(&translator);
 
   PostMachineModel *model = new PostMachineModel();
