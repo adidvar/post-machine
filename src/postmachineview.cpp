@@ -128,7 +128,9 @@ void PostMachineView::on_commands_widget_itemChanged(QTableWidgetItem *item)
 
     controller->commandEntered(row, command, argc, comment);
 
-    if (Command(command, argc, comment).getType() == Command::Invalid)
+    if (Command::checkCommand(command) == false && item->column() == 0)
+      QApplication::beep();
+    if (Command::checkJumps(command, argc) == false && item->column() == 1)
       QApplication::beep();
 
     loadDataFromModel(*controller->getModel());

@@ -53,25 +53,76 @@ size_t Command::getJump2() const
 {
     return m_jump2;
 }
-QString Command::getCommand()
-{
-    switch (m_type) {
+
+bool Command::checkCommand(QString command) {
+  QChar character = ' ';
+  if (command.simplified().size() > 0) character = command.simplified()[0];
+  if (character == '<')
+    return true;
+  else if (character == '>')
+    return true;
+  else if (character == '0')
+    return true;
+  else if (character == '1')
+    return true;
+  else if (character == '?')
+    return true;
+  else if (character == '!')
+    return true;
+  else
+    return false;
+}
+
+bool Command::checkJumps(QString command, QString jumps) {
+  Type m_type;
+  QChar character = ' ';
+  if (command.simplified().size() > 0) character = command.simplified()[0];
+  if (character == '<')
+    m_type = MoveLeft;
+  else if (character == '>')
+    m_type = MoveRight;
+  else if (character == '0')
+    m_type = WriteZero;
+  else if (character == '1')
+    m_type = WriteOne;
+  else if (character == '?')
+    m_type = MoveIF;
+  else if (character == '!')
+    m_type = End;
+  else
+    m_type = Invalid;
+
+  bool ok = false;
+  if (jumps.contains(',') && m_type == MoveIF) {
+    auto vectors = jumps.split(QString(","));
+    vectors[0].toInt(&ok);
+    if (!ok) return false;
+    vectors[1].toInt(&ok);
+    if (!ok) return false;
+  } else if (m_type != MoveIF) {
+    jumps.toInt(&ok);
+    if (!ok) return false;
+  }
+  return true;
+}
+QString Command::getCommand() {
+  switch (m_type) {
     case MoveLeft:
-        return "<";
+      return "<";
     case MoveRight:
-        return ">";
+      return ">";
     case WriteZero:
-        return "0";
+      return "0";
     case WriteOne:
-        return "1";
+      return "1";
     case MoveIF:
-        return "?";
+      return "?";
     case End:
-        return "!";
+      return "!";
     case Invalid:
-        return "";
-        break;
-    }
+      return "";
+      break;
+  }
 }
 
 QString Command::getJumps()

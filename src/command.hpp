@@ -16,6 +16,9 @@ public:
     size_t getJump1() const;
     size_t getJump2() const;
 
+    static bool checkCommand(QString command);
+    static bool checkJumps(QString command, QString jumps);
+
     QString getCommand();
     QString getJumps();
     QString getComment();
