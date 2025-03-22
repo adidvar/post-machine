@@ -291,7 +291,7 @@ void PostMachineView::on_actionLanguage_triggered() {
   for (qsizetype i = 0; i < locations_dirs.size(); ++i) {
     QDir dir(locations_dirs[i]);
 
-    if (!dir.exists()) break;
+    if (!dir.exists()) continue;
 
     QDirIterator it(dir.path(), {"postmachine.*.qm"}, QDir::Files);
     while (it.hasNext()) {
