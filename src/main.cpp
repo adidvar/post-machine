@@ -9,9 +9,8 @@
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
 
-  a.setOrganizationName("adidvar");
-  a.setOrganizationDomain("https://github.com/adidvar/post-machine");
-  a.setApplicationName("post-machine");
+  QApplication::setOrganizationName("adidvar");
+  QApplication::setApplicationName("post-machine");
 
   PostMachineModel *model = new PostMachineModel();
   PostMachineController *controller = new PostMachineController(model);

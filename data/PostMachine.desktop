@@ -1,10 +1,12 @@
 [Desktop Entry]
 Name=Post Machine
+Version=0.3.6
 Comment=Post machine emulator
 GenericName=Post Machine
-Icon=postmachine
+Icon=postmachine.png
 Exec=postmachine
 Terminal=false
 Type=Application
 Categories=Education;;
 Keywords=Post;Emulator;
+StartupWMClass=postmachine

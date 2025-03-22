@@ -30,6 +30,8 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
         QApplication::installTranslator(translator.data());
     }
 
+    QApplication::setWindowIcon(QIcon("/usr/share/pixmaps/postmachine.png"));
+
     m_timer->setSingleShot(true);
     ui->commands_widget->setSelectionBehavior(QAbstractItemView::SelectRows);
 

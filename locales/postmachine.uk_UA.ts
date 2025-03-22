@@ -76,7 +76,7 @@
     <message>
         <location filename="../src/postmachineview.ui" line="347"/>
         <location filename="../src/postmachineview.ui" line="385"/>
-        <location filename="../src/postmachineview.cpp" line="235"/>
+        <location filename="../src/postmachineview.cpp" line="237"/>
         <source>About</source>
         <translation>Про</translation>
     </message>
@@ -208,51 +208,51 @@
         <translation>Зворотній зв&apos;язок</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="74"/>
-        <location filename="../src/postmachineview.cpp" line="85"/>
-        <location filename="../src/postmachineview.cpp" line="90"/>
+        <location filename="../src/postmachineview.cpp" line="76"/>
+        <location filename="../src/postmachineview.cpp" line="87"/>
+        <location filename="../src/postmachineview.cpp" line="92"/>
         <source>Warning</source>
         <translation>Увага</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="75"/>
+        <location filename="../src/postmachineview.cpp" line="77"/>
         <source>Post machine stopped because found a command that don`t exist</source>
         <translation>Машина поста зупинилася через перехід на команду, що не існує</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="80"/>
+        <location filename="../src/postmachineview.cpp" line="82"/>
         <source>Information</source>
         <translation>Інформація</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="81"/>
+        <location filename="../src/postmachineview.cpp" line="83"/>
         <source>Post machine stopped because found a stop command</source>
         <translation>Машина поста зупинилася на стоп команді</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="86"/>
+        <location filename="../src/postmachineview.cpp" line="88"/>
         <source>Post machine stopped because found a invalid command</source>
         <translation>Машина поста зупинилася, через некоректну команду</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="91"/>
+        <location filename="../src/postmachineview.cpp" line="93"/>
         <source>Post machine stopped because tape is overrided</source>
         <translation>Машина поста зупилася, бо стрічка була перезаписана</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="195"/>
-        <location filename="../src/postmachineview.cpp" line="223"/>
+        <location filename="../src/postmachineview.cpp" line="197"/>
+        <location filename="../src/postmachineview.cpp" line="225"/>
         <source>Save file</source>
         <translation>Зберегти файл</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="202"/>
-        <location filename="../src/postmachineview.cpp" line="215"/>
+        <location filename="../src/postmachineview.cpp" line="204"/>
+        <location filename="../src/postmachineview.cpp" line="217"/>
         <source>Open file</source>
         <translation>Відкрити файл</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="236"/>
+        <location filename="../src/postmachineview.cpp" line="238"/>
         <source>The program is designed for educational purposes, 
 distributed under under the GNU GPL3 license. 
 The author is not responsible for the use of the program. 
@@ -320,28 +320,28 @@ Stop types:
 </translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="275"/>
+        <location filename="../src/postmachineview.cpp" line="277"/>
         <source>Custom speed</source>
         <translation>Власна швидкість</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="275"/>
+        <location filename="../src/postmachineview.cpp" line="277"/>
         <source>Enter delay between commands in ms</source>
         <translation>Введіть затримку між командами в мілісекундах</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="290"/>
-        <location filename="../src/postmachineview.cpp" line="307"/>
+        <location filename="../src/postmachineview.cpp" line="292"/>
+        <location filename="../src/postmachineview.cpp" line="309"/>
         <source>default</source>
         <translation>стандартна</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="302"/>
+        <location filename="../src/postmachineview.cpp" line="304"/>
         <source>Choose your language</source>
         <translation>Виберіть свою мову</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="303"/>
+        <location filename="../src/postmachineview.cpp" line="305"/>
         <source>Language:</source>
         <translation>Мова:</translation>
     </message>
