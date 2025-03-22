@@ -71,6 +71,10 @@ if(LINUX)
     set(CPACK_PACKAGING_INSTALL_PREFIX "/usr")
 endif()
 
+if(WIN32)
+    install(FILES ${qm_files} DESTINATION ${CMAKE_INSTALL_DATADIR}/${CMAKE_PROJECT_NAME}/locales)
+endif()
+
 if (APPLE OR WIN32)
     qt_generate_deploy_app_script(
     TARGET ${CMAKE_PROJECT_NAME}
