@@ -6,6 +6,7 @@
 #include <QSharedPointer>
 #include <QTableWidgetItem>
 #include <QTimer>
+#include <QTranslator>
 
 #include "tapewidget.hpp"
 
