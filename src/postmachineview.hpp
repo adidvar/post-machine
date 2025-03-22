@@ -2,6 +2,8 @@
 #define POSTMACHINEVIEW_HPP
 
 #include <QMainWindow>
+#include <QSettings>
+#include <QSharedPointer>
 #include <QTableWidgetItem>
 #include <QTimer>
 
@@ -59,12 +61,22 @@ private slots:
 
     void on_problem_edit_textChanged();
 
+    void on_actionFeedback_triggered();
+
+    void on_actionLanguage_triggered();
+
+    void changeEvent(QEvent *event);
+
    private:
     Ui::PostMachineView *ui;
 
     PostMachineController *controller;
 
     QTimer *m_timer;
+
+    QSharedPointer<QTranslator> translator;
+
+    QSettings settings;
 
     ///< flag for locking event while data loading to view
     bool m_editing = false;

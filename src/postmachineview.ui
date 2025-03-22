@@ -69,7 +69,10 @@
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer_2">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
           <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
@@ -83,7 +86,7 @@
       <item>
        <widget class="Line" name="line_3">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -131,7 +134,7 @@
       <item>
        <widget class="Line" name="line">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -202,7 +205,7 @@
       <item>
        <widget class="Line" name="line_2">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -239,7 +242,7 @@
           <item>
            <spacer name="verticalSpacer">
             <property name="orientation">
-             <enum>Qt::Vertical</enum>
+             <enum>Qt::Orientation::Vertical</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -266,7 +269,7 @@
            <bool>true</bool>
           </property>
           <property name="gridStyle">
-           <enum>Qt::NoPen</enum>
+           <enum>Qt::PenStyle::NoPen</enum>
           </property>
           <property name="sortingEnabled">
            <bool>false</bool>
@@ -345,6 +348,7 @@
     </property>
     <addaction name="instruction_action"/>
     <addaction name="about_action"/>
+    <addaction name="actionFeedback"/>
    </widget>
    <widget class="QMenu" name="menu_4">
     <property name="title">
@@ -356,9 +360,16 @@
     <addaction name="separator"/>
     <addaction name="custom_speed_action"/>
    </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionLanguage"/>
+   </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
    <addaction name="menu_4"/>
+   <addaction name="menuSettings"/>
    <addaction name="menu_3"/>
   </widget>
   <action name="instruction_action">
@@ -455,6 +466,16 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionFeedback">
+   <property name="text">
+    <string>Feedback</string>
+   </property>
+  </action>
+  <action name="actionLanguage">
+   <property name="text">
+    <string>Language</string>
    </property>
   </action>
  </widget>

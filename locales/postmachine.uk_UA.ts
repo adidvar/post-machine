@@ -24,227 +24,251 @@
         <translation>Наступна</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="93"/>
+        <location filename="../src/postmachineview.ui" line="96"/>
         <source>Problem</source>
         <translation>Завдання</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="155"/>
+        <location filename="../src/postmachineview.ui" line="158"/>
         <source>&lt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="196"/>
+        <location filename="../src/postmachineview.ui" line="199"/>
         <source>&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="222"/>
+        <location filename="../src/postmachineview.ui" line="225"/>
         <source>+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="235"/>
+        <location filename="../src/postmachineview.ui" line="238"/>
         <source>-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="294"/>
+        <location filename="../src/postmachineview.ui" line="297"/>
         <source>Command</source>
         <translation>Команда</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="299"/>
+        <location filename="../src/postmachineview.ui" line="302"/>
         <source>Jump</source>
         <translation>Перехід</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="304"/>
+        <location filename="../src/postmachineview.ui" line="307"/>
         <source>Comment</source>
         <translation>Коментар</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="326"/>
+        <location filename="../src/postmachineview.ui" line="329"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="337"/>
+        <location filename="../src/postmachineview.ui" line="340"/>
         <source>Tape</source>
         <translation>Стрічка</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="344"/>
-        <location filename="../src/postmachineview.ui" line="374"/>
-        <location filename="../src/postmachineview.cpp" line="220"/>
+        <location filename="../src/postmachineview.ui" line="347"/>
+        <location filename="../src/postmachineview.ui" line="385"/>
+        <location filename="../src/postmachineview.cpp" line="234"/>
         <source>About</source>
         <translation>Про</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="351"/>
+        <location filename="../src/postmachineview.ui" line="355"/>
         <source>Speed</source>
         <translation>Швидкість</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="366"/>
-        <source>Guide</source>
-        <translation>Інструкція</translation>
-    </message>
-    <message>
-        <location filename="../src/postmachineview.ui" line="369"/>
-        <source>G</source>
+        <location filename="../src/postmachineview.ui" line="478"/>
+        <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/postmachineview.ui" line="377"/>
+        <source>Guide</source>
+        <translation>Інструкція</translation>
+    </message>
+    <message>
+        <location filename="../src/postmachineview.ui" line="365"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/postmachineview.ui" line="380"/>
+        <source>G</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/postmachineview.ui" line="388"/>
         <source>A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="382"/>
-        <location filename="../src/postmachineview.ui" line="398"/>
+        <location filename="../src/postmachineview.ui" line="393"/>
+        <location filename="../src/postmachineview.ui" line="409"/>
         <source>Load</source>
         <translation>Завантажити</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="385"/>
+        <location filename="../src/postmachineview.ui" line="396"/>
         <source>Ctrl+Alt+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="390"/>
-        <location filename="../src/postmachineview.ui" line="406"/>
+        <location filename="../src/postmachineview.ui" line="401"/>
+        <location filename="../src/postmachineview.ui" line="417"/>
         <source>Save</source>
         <translation>Зберегти</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="393"/>
+        <location filename="../src/postmachineview.ui" line="404"/>
         <source>Ctrl+Alt+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="401"/>
+        <location filename="../src/postmachineview.ui" line="412"/>
         <source>Ctrl+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="409"/>
+        <location filename="../src/postmachineview.ui" line="420"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="414"/>
+        <location filename="../src/postmachineview.ui" line="425"/>
         <source>Quit</source>
         <translation>Вийти</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="417"/>
+        <location filename="../src/postmachineview.ui" line="428"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="422"/>
+        <location filename="../src/postmachineview.ui" line="433"/>
         <source>Fast</source>
         <translation>Швидко</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="425"/>
+        <location filename="../src/postmachineview.ui" line="436"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="430"/>
+        <location filename="../src/postmachineview.ui" line="441"/>
         <source>Normal</source>
         <translation>Нормально</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="433"/>
+        <location filename="../src/postmachineview.ui" line="444"/>
         <source>N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="438"/>
+        <location filename="../src/postmachineview.ui" line="449"/>
         <source>Slow</source>
         <translation>Повільно</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="441"/>
+        <location filename="../src/postmachineview.ui" line="452"/>
         <source>S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="446"/>
+        <location filename="../src/postmachineview.ui" line="457"/>
         <source>Custom</source>
         <translation>Користувацька</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="449"/>
+        <location filename="../src/postmachineview.ui" line="460"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="454"/>
+        <location filename="../src/postmachineview.ui" line="465"/>
         <source>New</source>
         <translation>Новий</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="457"/>
+        <location filename="../src/postmachineview.ui" line="468"/>
         <source>Ctrl+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="59"/>
-        <location filename="../src/postmachineview.cpp" line="70"/>
-        <location filename="../src/postmachineview.cpp" line="75"/>
+        <location filename="../src/postmachineview.ui" line="473"/>
+        <source>Feedback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/postmachineview.cpp" line="73"/>
+        <location filename="../src/postmachineview.cpp" line="84"/>
+        <location filename="../src/postmachineview.cpp" line="89"/>
         <source>Warning</source>
         <translation>Увага</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="60"/>
+        <location filename="../src/postmachineview.cpp" line="74"/>
         <source>Post machine stopped because found a command that don`t exist</source>
         <translation>Машина поста зупинилася через перехід на команду, що не існує</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="65"/>
+        <location filename="../src/postmachineview.cpp" line="79"/>
         <source>Information</source>
         <translation>Інформація</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="66"/>
+        <location filename="../src/postmachineview.cpp" line="80"/>
         <source>Post machine stopped because found a stop command</source>
         <translation>Машина поста зупинилася на стоп команді</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="71"/>
+        <location filename="../src/postmachineview.cpp" line="85"/>
         <source>Post machine stopped because found a invalid command</source>
         <translation>Машина поста зупинилася, через некоректну команду</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="76"/>
+        <location filename="../src/postmachineview.cpp" line="90"/>
         <source>Post machine stopped because tape is overrided</source>
         <translation>Машина поста зупилася, бо стрічка була перезаписана</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="180"/>
-        <location filename="../src/postmachineview.cpp" line="208"/>
+        <location filename="../src/postmachineview.cpp" line="194"/>
+        <location filename="../src/postmachineview.cpp" line="222"/>
         <source>Save file</source>
         <translation>Зберегти файл</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="187"/>
-        <location filename="../src/postmachineview.cpp" line="200"/>
+        <location filename="../src/postmachineview.cpp" line="201"/>
+        <location filename="../src/postmachineview.cpp" line="214"/>
         <source>Open file</source>
         <translation>Відкрити файл</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="221"/>
+        <location filename="../src/postmachineview.cpp" line="235"/>
+        <source>The program is designed for educational purposes, 
+distributed under under the GNU GPL3 license. 
+The author is not responsible for the use of the program. 
+The source code can be downloaded from the link 
+
+https://github.com/adidvar/post-machine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>The program is designed for educational purposes, 
 distributed under under the GNU GPL3 license. 
 The author is not responsible for the use of the program. 
 The source code can be downloaded from the link 
 
 https://github.com/adidvar/PostMachine</source>
-        <translation>Програма розроблена для навчальних цілей,
+        <translation type="vanished">Програма розроблена для навчальних цілей,
 поширюється під ліцензією GPL3.
 Автор не несе відповідальності за використання програми.
 Джерельний код може бути завантажений за посиланням
@@ -252,12 +276,10 @@ https://github.com/adidvar/PostMachine</source>
 https://github.com/adidvar/post-machine</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="231"/>
         <source>Instruction</source>
-        <translation>Інструкція</translation>
+        <translation type="vanished">Інструкція</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="232"/>
         <source>Instruction set:1 - writes to cell 
 0 - erases cell 
 &lt; - step left 
@@ -275,7 +297,7 @@ Stop types:
 2) stop after command ptr goes out from commands 
 3) stop when program hits on incorrect commmand 
 </source>
-        <translation type="unfinished">Набір команд:
+        <translation type="obsolete">Набір команд:
 1 - записати 1 на стрічку
 0 - записати 0 на стрічку
 &lt; - крок вліво
@@ -293,14 +315,30 @@ Stop types:
 </translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="277"/>
+        <location filename="../src/postmachineview.cpp" line="274"/>
         <source>Custom speed</source>
         <translation>Власна швидкість</translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="277"/>
+        <location filename="../src/postmachineview.cpp" line="274"/>
         <source>Enter delay between commands in ms</source>
         <translation>Введіть затримку між командами в мілісекундах</translation>
+    </message>
+    <message>
+        <location filename="../src/postmachineview.cpp" line="289"/>
+        <location filename="../src/postmachineview.cpp" line="306"/>
+        <source>default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/postmachineview.cpp" line="301"/>
+        <source>Choose your language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/postmachineview.cpp" line="302"/>
+        <source>Language:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
