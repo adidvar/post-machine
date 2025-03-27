@@ -2,11 +2,8 @@
 #define POSTMACHINEVIEW_HPP
 
 #include <QMainWindow>
-#include <QSettings>
-#include <QSharedPointer>
 #include <QTableWidgetItem>
 #include <QTimer>
-#include <QTranslator>
 
 #include "tapewidget.hpp"
 
@@ -41,6 +38,7 @@ private slots:
     void on_run_button_clicked();
     void on_stop_button_clicked();
     void on_step_button_clicked();
+    void on_reset_button_clicked();
 
     void save_tape();
     void load_tape();
@@ -62,22 +60,12 @@ private slots:
 
     void on_problem_edit_textChanged();
 
-    void on_actionFeedback_triggered();
-
-    void on_actionLanguage_triggered();
-
-    void changeEvent(QEvent *event);
-
    private:
     Ui::PostMachineView *ui;
 
     PostMachineController *controller;
 
     QTimer *m_timer;
-
-    QSharedPointer<QTranslator> translator;
-
-    QSettings settings;
 
     ///< flag for locking event while data loading to view
     bool m_editing = false;

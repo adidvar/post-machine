@@ -1,18 +1,12 @@
 #include "postmachineview.hpp"
 
-#include <QDesktopServices>
-#include <QDirIterator>
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QMessageBox>
-#include <QTranslator>
 
 #include "./ui_postmachineview.h"
 #include "postmachinecontroller.hpp"
 #include "postmachinemodel.hpp"
-
-const QStringList locations_dirs = {"share/postmachine/locales", ".",
-                                    "/usr/share/postmachine/locales"};
 
 PostMachineView::PostMachineView(PostMachineController *controller, QWidget *parent)
     : QMainWindow(parent)
@@ -21,15 +15,6 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     , m_timer(new QTimer(this))
 {
     ui->setupUi(this);
-
-    translator.reset(new QTranslator());
-
-    if (settings.contains("language")) {
-      translator.reset(new QTranslator());
-      if (translator.data()->load(settings.value("language").toString()))
-        QApplication::installTranslator(translator.data());
-    }
-
     m_timer->setSingleShot(true);
     ui->commands_widget->setSelectionBehavior(QAbstractItemView::SelectRows);
 
@@ -103,6 +88,7 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
     ui->stop_button->setEnabled(model.isRunning());
     ui->step_button->setEnabled(!model.isRunning());
     ui->commands_widget->setEnabled(!model.isRunning());
+    ui->reset_button->setEnabled(!model.isRunning());
 
     auto commands = model.getCommands();
 
@@ -189,6 +175,11 @@ void PostMachineView::on_step_button_clicked()
       controller->getModel()->reset();
 }
 
+void PostMachineView::on_reset_button_clicked()
+{
+    controller->reset();
+}
+
 void PostMachineView::save_tape()
 {
     controller->saveTape(
@@ -231,19 +222,36 @@ void PostMachineView::exit()
 
 void PostMachineView::about()
 {
-  QMessageBox::about(
-      this, tr("About"),
-      tr("The program is designed for educational purposes, \n"
-         "distributed under under the GNU GPL3 license. \n"
-         "The author is not responsible for the use of the program. \n"
-         "The source code can be downloaded from the link \n\n"
-         "https://github.com/adidvar/post-machine"));
+    QMessageBox::about(
+        this, tr("About"),
+        tr("The program is designed for educational purposes, \n"
+           "distributed under under the GNU GPL3 license. \n"
+           "The author is not responsible for the use of the program. \n"
+           "The source code can be downloaded from the link \n\n"
+           "https://github.com/adidvar/PostMachine"));
 }
 
 void PostMachineView::instruction()
 {
-  QDesktopServices::openUrl(
-      QUrl("https://github.com/adidvar/post-machine/blob/master/GUIDE.md"));
+    QMessageBox::about(
+        this, tr("Instruction"),
+        tr("Instruction set:"
+           "1 - writes to cell \n"
+           "0 - erases cell \n"
+           "< - step left \n"
+           "> - step right \n"
+           "? - jumps to first jump point if cell haven`t mark  \n"
+           "else jumps to second jump point \n"
+           "! stops machine \n"
+           "Jump types: \n"
+           "1) \"\" empty jumps moves you to the next command \n"
+           "2) \"1\" jumps to the first command \n"
+           "3) \"3,4\" jump for ? command, if cell is marked  \n"
+           "jumps to 4 else jumps to 3 \n"
+           "Stop types: \n"
+           "1) stop after ! command \n"
+           "2) stop after command ptr goes out from commands \n"
+           "3) stop when program hits on incorrect commmand \n"));
 }
 
 void PostMachineView::timer()
@@ -279,43 +287,4 @@ void PostMachineView::on_problem_edit_textChanged() {
     if (m_editing) return;
     controller->problemTextChanged(ui->problem_edit->toPlainText());
     loadDataFromModel(*controller->getModel());
-}
-
-void PostMachineView::on_actionFeedback_triggered() {
-  QDesktopServices::openUrl(
-      QUrl("https://github.com/adidvar/post-machine/issues"));
-}
-
-void PostMachineView::on_actionLanguage_triggered() {
-  QStringList localizations = {tr("default")};
-  for (qsizetype i = 0; i < locations_dirs.size(); ++i) {
-    QDir dir(locations_dirs[i]);
-
-    if (!dir.exists()) continue;
-
-    QDirIterator it(dir.path(), {"postmachine.*.qm"}, QDir::Files);
-    while (it.hasNext()) {
-      localizations.push_back(it.next());
-    }
-  }
-
-  auto language = QInputDialog::getItem(nullptr, tr("Choose your language"),
-                                        tr("Language:"), localizations, 0);
-  if (language.isEmpty()) return;
-
-  translator.reset(new QTranslator());
-  if (language != tr("default") && translator->load(language)) {
-    QApplication::removeTranslator(translator.data());
-    settings.setValue("language", language);
-    QApplication::installTranslator(translator.data());
-  }
-}
-
-void PostMachineView::changeEvent(QEvent *event) {
-  static auto is_ready = true;
-
-  if (event->type() == QEvent::LanguageChange && is_ready) {
-    ui->retranslateUi(this);
-    this->show();
-  }
 }

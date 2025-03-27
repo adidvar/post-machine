@@ -20,6 +20,7 @@ class PostMachineController {
   void start();
   void stop();
   void step();
+  void reset();
 
   void cleanAll();
   void loadFile(QString url);

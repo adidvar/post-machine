@@ -91,6 +91,10 @@ void PostMachineController::timer()
     if (m_model->isRunning()) m_model->nextStep();
 }
 
+void PostMachineController::reset() {
+    m_model->reset();
+}
+
 void PostMachineController::highSpeed()
 {
     m_model->setTimerDelay(100);

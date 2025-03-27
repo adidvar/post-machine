@@ -46,6 +46,11 @@ CMakeLists.txt.user*
 # Vim temporary files
 .*.swp
 
+# VScode generated config
+.vscode
+# Zed generated config
+.zed
+
 # Visual Studio generated files
 *.ib_pdb_index
 *.idb
