@@ -25,6 +25,9 @@ include_directories(src)
 # Resources
 if (WIN32)
     set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/data/info.rc")
+    set(CMAKE_WIN32_EXECUTABLE ON)
+endif()
+
 endif ()
 
 # App
