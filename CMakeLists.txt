@@ -28,8 +28,6 @@ if (WIN32)
     set(CMAKE_WIN32_EXECUTABLE ON)
 endif()
 
-endif ()
-
 # App
 qt_add_executable(${CMAKE_PROJECT_NAME}
                 ${PROJECT_SOURCES}
