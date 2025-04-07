@@ -68,6 +68,8 @@ private slots:
 
     void changeEvent(QEvent *event);
 
+    void on_reset_button_clicked();
+
    private:
     Ui::PostMachineView *ui;
 
