@@ -97,3 +97,79 @@ jobs:
           files: build/package/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Set up Emscripten
+        uses: mymindstorm/setup-emsdk@v12
+        with:
+          version: 3.1.45
+          actions-cache-folder: "emsdk-cache"
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential ninja-build
+
+      - name: Install Qt for WebAssembly
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "6.8"
+          host: "linux"
+          target: "desktop"
+          arch: "wasm_multithread"
+          modules: "qtwebsockets qtpositioning qtsvg"
+          setup-python: true
+          cache: true
+          cache-key-prefix: "qt-wasm"
+
+      - name: Configure CMake for WebAssembly
+        run: |
+          mkdir -p wasm-build
+          cd wasm-build
+          cmake .. -DCMAKE_PREFIX_PATH=$Qt6_DIR \
+                  -DCMAKE_TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake \
+                  -DCMAKE_BUILD_TYPE=Release \
+                  -DCMAKE_CXX_FLAGS="-s USE_PTHREADS=1" \
+                  -G Ninja
+
+      - name: Build WebAssembly
+        run: |
+          cd wasm-build
+          ninja
+
+      - name: Prepare WebAssembly Deployment
+        run: |
+          mkdir -p wasm-deploy
+          cp wasm-build/*.js wasm-deploy/
+          cp wasm-build/*.wasm wasm-deploy/
+          cp wasm-build/*.html wasm-deploy/
+          cp wasm-build/*.worker.js wasm-deploy/ || true
+          cp -r assets/* wasm-deploy/ || true
+          echo "AddType application/wasm .wasm" > wasm-deploy/.htaccess
+          echo "AddType application/javascript .js" >> wasm-deploy/.htaccess
+
+      - name: Create WebAssembly Package
+        run: |
+          mkdir -p build/package
+          zip -r build/package/wasm-package.zip wasm-deploy/
+
+      - name: Upload WebAssembly Package
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/package/wasm-package.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: wasm-deploy
+          branch: gh-pages
+          clean: true
