@@ -98,75 +98,90 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  build-wasm:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
+   build-wasm:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout repository
+         uses: actions/checkout@v3
+         with:
+           submodules: recursive
 
-      - name: Install Emscripten and dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential ninja-build emscripten
-          sudo apt-get install -y libgl-dev
+       - name: Install Qt for WebAssembly
+         uses: jurplel/install-qt-action@v4
+         with:
+           version: "6.8"
+           host: "linux"
+           target: "desktop"
+           arch: "wasm_singlethread"
+           modules: 'qtwebsockets qtpositioning qtsvg'
+           setup-python: true
+           cache: true
+           cache-key-prefix: "qt-wasm"
 
-      - name: Install Qt for WebAssembly
-        uses: jurplel/install-qt-action@v4
-        with:
-          version: "6.8"
-          host: "linux"
-          target: "desktop"
-          arch: "wasm_multithread"
-          modules: "qtwebsockets qtpositioning qtsvg"
-          setup-python: true
-          cache: true
-          cache-key-prefix: "qt-wasm"
+       - name: Setup Emscripten
+         run: |
+           # Install emsdk
+           git clone https://github.com/emscripten-core/emsdk.git
+           cd emsdk
+           ./emsdk install 3.1.56  # Version required for Qt 6.8
+           ./emsdk activate 3.1.56
+           echo "EMSDK=$PWD" >> $GITHUB_ENV
+           echo "EMSCRIPTEN=$PWD/upstream/emscripten" >> $GITHUB_ENV
+           echo "$PWD:$PWD/upstream/emscripten:$PWD/node/14.18.2_64bit/bin" >> $GITHUB_PATH
+           cd ..
 
-      - name: Configure CMake for WebAssembly
-        run: |
-          mkdir -p wasm-build
-          cd wasm-build
-          # Using system Emscripten installation
-          export EMSCRIPTEN=/usr/lib/emscripten
-          cmake .. -DCMAKE_PREFIX_PATH=$Qt6_DIR \
-                  -DCMAKE_TOOLCHAIN_FILE=/usr/lib/emscripten/cmake/Modules/Platform/Emscripten.cmake \
-                  -DCMAKE_BUILD_TYPE=Release \
-                  -DCMAKE_CXX_FLAGS="-s USE_PTHREADS=1" \
-                  -G Ninja
+       - name: Verify Emscripten
+         run: |
+           source emsdk/emsdk_env.sh
+           em++ --version
 
-      - name: Build WebAssembly
-        run: |
-          cd wasm-build
-          ninja
+       - name: Install build dependencies
+         run: |
+           sudo apt-get update
+           sudo apt-get install -y build-essential ninja-build
 
-      - name: Prepare WebAssembly Deployment
-        run: |
-          mkdir -p wasm-deploy
-          cp wasm-build/*.js wasm-deploy/
-          cp wasm-build/*.wasm wasm-deploy/
-          cp wasm-build/*.html wasm-deploy/
-          cp wasm-build/*.worker.js wasm-deploy/ || true
-          cp -r assets/* wasm-deploy/ || true
-          echo "AddType application/wasm .wasm" > wasm-deploy/.htaccess
-          echo "AddType application/javascript .js" >> wasm-deploy/.htaccess
+       - name: Configure CMake for WebAssembly
+         run: |
+           source emsdk/emsdk_env.sh
+           mkdir -p wasm-build
+           cd wasm-build
+           cmake .. -DCMAKE_PREFIX_PATH=$Qt6_DIR \
+                   -DCMAKE_TOOLCHAIN_FILE=$EMSCRIPTEN/cmake/Modules/Platform/Emscripten.cmake \
+                   -DCMAKE_BUILD_TYPE=Release \
+                   -G Ninja
 
-      - name: Create WebAssembly Package
-        run: |
-          mkdir -p build/package
-          zip -r build/package/wasm-package.zip wasm-deploy/
+       - name: Build WebAssembly
+         run: |
+           source emsdk/emsdk_env.sh
+           cd wasm-build
+           ninja
 
-      - name: Upload WebAssembly Package
-        uses: softprops/action-gh-release@v1
-        with:
-          files: build/package/wasm-package.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       - name: Prepare WebAssembly Deployment
+         run: |
+           mkdir -p wasm-deploy
+           cp wasm-build/*.js wasm-deploy/
+           cp wasm-build/*.wasm wasm-deploy/
+           cp wasm-build/*.html wasm-deploy/
+           cp wasm-build/*.worker.js wasm-deploy/ || true
+           cp -r assets/* wasm-deploy/ || true
+           echo "AddType application/wasm .wasm" > wasm-deploy/.htaccess
+           echo "AddType application/javascript .js" >> wasm-deploy/.htaccess
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: wasm-deploy
-          branch: gh-pages
-          clean: true
+       - name: Create WebAssembly Package
+         run: |
+           mkdir -p build/package
+           zip -r build/package/wasm-package.zip wasm-deploy/
+
+       - name: Upload WebAssembly Package
+         uses: softprops/action-gh-release@v1
+         with:
+           files: build/package/wasm-package.zip
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+       - name: Deploy to GitHub Pages
+         uses: JamesIves/github-pages-deploy-action@v4
+         with:
+           folder: wasm-deploy
+           branch: gh-pages
+           clean: true
