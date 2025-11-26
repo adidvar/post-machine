@@ -20,7 +20,7 @@ Prebuilt packages are available for the following operating systems:
 - ✅ **Windows**:
   - Portable `.zip` package.
   - Windows Installer (`.exe`).
-- ❌ **macOS**: Currently not available for direct installation due to issues, but source compilation is possible.
+- ✅ **macOS**: Available as a `.dmg` file.
 
 ## Features
 

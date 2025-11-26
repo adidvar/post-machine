@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 
-project(postmachine VERSION 0.3.8 LANGUAGES CXX)
+project(postmachine VERSION 0.3.9 LANGUAGES CXX)
 
 # C++
 set(CMAKE_CXX_STANDARD 17)
@@ -46,6 +46,10 @@ if(APPLE)
         MACOSX_BUNDLE_GUI_IDENTIFIER "com.adidvar.postmachine"
         MACOSX_BUNDLE_BUNDLE_IDENTIFIER "com.adidvar.postmachine"
     )
+
+    install(TARGETS ${CMAKE_PROJECT_NAME}
+        BUNDLE DESTINATION .
+    )
 endif()
 
 # Translation
@@ -60,10 +64,11 @@ add_dependencies(${CMAKE_PROJECT_NAME} postmachine_lrelease)
 
 # Deploy
 include(GNUInstallDirs)
-install(TARGETS ${CMAKE_PROJECT_NAME}
-    BUNDLE  DESTINATION .
+if(NOT APPLE)
+    install(TARGETS ${CMAKE_PROJECT_NAME}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+    )
+endif()
 
 if(LINUX)
     install(FILES ${qm_files} DESTINATION ${CMAKE_INSTALL_DATADIR}/${CMAKE_PROJECT_NAME}/locales)
@@ -96,12 +101,17 @@ set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CMAKE_SYSTEM_NAME}-v${CPACK
 
 # --- macOS DMG ---
 if(APPLE)
-    set(CPACK_GENERATOR "Bundle")
+    set(CPACK_GENERATOR "DragNDrop")
     set(CPACK_PACKAGE_NAME "PostMachine")
     set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
     set(CPACK_BUNDLE_NAME "PostMachine")
     set(CPACK_BUNDLE_ICON "${CMAKE_SOURCE_DIR}/data/postmachine.icns")
-    set(CPACK_BUNDLE_PLIST "${CMAKE_SOURCE_DIR}/data/Info.plist")
+
+    set(CPACK_DMG_VOLUME_NAME "Post Machine Installer ${PROJECT_VERSION}")
+
+    install(FILES "${CMAKE_SOURCE_DIR}/data/postmachine.icns"
+                DESTINATION ${CMAKE_PROJECT_NAME}.app/Contents/Resources)
+    install(FILES ${qm_files} DESTINATION ${CMAKE_PROJECT_NAME}.app/Contents/Resources/Locales)
 
 endif()
 
