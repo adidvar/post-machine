@@ -11,8 +11,9 @@
 #include "postmachinecontroller.hpp"
 #include "postmachinemodel.hpp"
 
-const QStringList locations_dirs = {"share/postmachine/locales", ".",
-                                    "/usr/share/postmachine/locales"};
+QStringList locations_dirs = {"share/postmachine/locales", ".",
+                                    "/usr/share/postmachine/locales",
+                                    };
 
 PostMachineView::PostMachineView(PostMachineController *controller, QWidget *parent)
     : QMainWindow(parent)
@@ -20,6 +21,8 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     , controller(controller)
     , m_timer(new QTimer(this))
 {
+    locations_dirs.append(QDir::cleanPath(QCoreApplication::applicationDirPath() + "/../Resources/Locales"));
+
     ui->setupUi(this);
 
     translator.reset(new QTranslator());
